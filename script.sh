@@ -1,29 +1,30 @@
-# Reset
-RESET='\033[0m'       # Text Reset
+rand_hat_color=$(( (RANDOM % 7 ) + 31))
+rand_cat_color=$(( (RANDOM % 7 ) + 30))
 
-# Regular Colors
-Black='\033[0;30m'        # Black
-RED='\033[0;31m'          # Red
-Green='\033[0;32m'        # Green
-Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
-Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
+cd Ascii/hats 
+hatfiles=(*.txt)
+num_hat_files=${#hatfiles[@]}
+rand_hat_index=$((RANDOM%num_hat_files))
+rand_hat=${hatfiles[$rand_hat_index]}
+
+echo "\033[${rand_hat_color}m$(cat $rand_hat)\033[0m"
+
+cd ../cats
+catfiles=(*.txt)
+num_cat_files=${#catfiles[@]}
+rand_cat_index=$((RANDOM%num_cat_files))
+rand_cat=${catfiles[$rand_cat_index]}
 
 
-cd ~/Dev/Ascii-Cat/Ascii
+echo "\033[${rand_cat_color}m$(cat $rand_cat)\033[0m"
 
-files=(*)
+nouns=(Tweedledum Upsy-daisy Whatchamacallit Whirligig Wiggle Wobble Yahoo Yowza Zany Zoinks Doohickey Hootenanny Jiggly Jitterbug Klutz Lollygag Monkeyshines Natter Noggin Noodle Pipsqueak Quibble Sassafras Schlep Scuff Skosh Snafu Snickerdoodle Sploosh Squeegee Stinky Tootsie Twerp Wackadoo Whimsy Whoopie Wigwam Wimpy Wobbly Wonky Yapper Zeppelin)
+adjectives=(Featherbrained Airheaded Spacey Dizzy Fuzzy-headed Muddle-headed Absentminded Forgetful Lacking-in-common-sense Impractical Unreasonable Illogical Irrational Fictitious Imaginary Unreal Fanciful Romantic Visionary Dreamy Illusory Hallucinatory Delusional Paranoiac Psychotic Schizoid Maniacal Berserk Lunatic Deranged Crazed Nuts Mad Insane Bonkers Loopy Barmy Crackbrained Meshuga Non-compos-mentis Inane)
 
-# Get the number of files in the folder
-num_files=${#files[@]}
+# Generate a random name
+noun_index=$(($RANDOM % ${#nouns[@]}))
+adjective_index=$(($RANDOM % ${#adjectives[@]}))
+name=${adjectives[$adjective_index]}-${nouns[$noun_index]}
 
-# Generate a random number between 0 and the number of files
-rand_index=$((RANDOM%num_files))
-
-# Get the name of the file at the random index
-rand_file=${files[$rand_index]}
-
-# Echo the name of the randomly selected file
-echo "$(cat $rand_file)"
+echo ""
+echo " " $name

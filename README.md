@@ -1,1 +1,1 @@
-plugin to have ascii pets in your CLI   
+Plugin to have random ascii cats in your CLI. 
