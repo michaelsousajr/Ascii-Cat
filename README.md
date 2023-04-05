@@ -1,1 +1,1 @@
-Plugin to have random ascii cats in your CLI. 
+Script that echos silly random cats to your terminal.
