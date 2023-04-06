@@ -1,5 +1,5 @@
 rand_hat_color=$(( (RANDOM % 7 ) + 31))
-rand_cat_color=$(( (RANDOM % 7 ) + 30))
+rand_cat_color=$(( (RANDOM % 7 ) + 31))
 
 cd Ascii/hats 
 hatfiles=(*.txt)
